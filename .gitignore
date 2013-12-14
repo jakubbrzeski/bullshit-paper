@@ -11,3 +11,9 @@
 /target/
 
 *.pdf
+
+.project
+.settings/
+.classpath
+.idea
+*.iml
