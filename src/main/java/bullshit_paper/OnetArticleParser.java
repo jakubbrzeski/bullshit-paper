@@ -21,7 +21,9 @@ public class OnetArticleParser implements IArticleParser {
             String commentContent = e.select(".k_content").text();
             String commentDateString = normalizeWhitespace(e.select(".k_nForum_CommentInfo > span:first-child").text());
             if (commentAuthor.length() > 0) {
-//                commentAuthor = commentAuthor.substring(1, commentAuthor.length() - 2);
+                if(commentAuthor.startsWith("~")) commentAuthor = commentAuthor.substring(1, commentAuthor.length());
+                if(commentAuthor.endsWith(":")) commentAuthor = commentAuthor.substring(0, commentAuthor.length()-1);
+                if(commentAuthor.endsWith(" ")) commentAuthor = commentAuthor.substring(0, commentAuthor.length()-1);
             }
             res.add(new Comment(commentContent, commentAuthor, OnetDate.parse(commentDateString)));
         }

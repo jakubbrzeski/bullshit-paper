@@ -21,6 +21,6 @@ public class OnetPlayground
 	    new SectionInfo(Arrays.asList("doda"), "Doda", java.awt.Color.PINK, true),
 	    new SectionInfo(Arrays.asList("Smoleńsk"), "Smoleńsk", java.awt.Color.BLACK, false),
 	    new SectionInfo(Arrays.asList("śnieg"), "Śnieg", java.awt.Color.BLUE, true) });
-	new PaperGenerator().generate("Onet BP", sectionInfos, new FileOutputStream("onettest.pdf"));
+    	new PaperGenerator().generate("Onet BP", sectionInfos, new FileOutputStream("onettest.pdf"));
     }
 }

@@ -29,7 +29,7 @@ public class OnetArticleProvider implements IArticleProvider{
     @Override
     public List<Document> getDocuments(List<String> tags) {
         if (tags == null || tags.isEmpty()) {
-            return null;
+            return new LinkedList<Document>();
         }
         try {
             LinkedList<Document> res = new LinkedList<>();
@@ -43,7 +43,7 @@ public class OnetArticleProvider implements IArticleProvider{
             }
             return res;
         } catch (IOException ex) {
-            return null;
+            return new LinkedList<Document>();
         }
     }
 }
