@@ -1,105 +1,102 @@
 package bullshit_paper;
 
 import java.util.Random;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 public class SudokuGenerator {
     private final Random r = new Random();
     public Sudoku generate() {
-        int n = 9;
         Sudoku s = new Sudoku();
         
-		if (r.nextInt(9) < 2) s.set(0, 0, 3);
-		if (r.nextInt(9) < 2) s.set(0, 1, 8);
-		if (r.nextInt(9) < 2) s.set(0, 2, 1);
-		if (r.nextInt(9) < 2) s.set(0, 3, 7);
-		if (r.nextInt(9) < 2) s.set(0, 4, 4);
-		if (r.nextInt(9) < 2) s.set(0, 5, 9);
-		if (r.nextInt(9) < 2) s.set(0, 6, 2);
-		if (r.nextInt(9) < 2) s.set(0, 7, 6);
-		if (r.nextInt(9) < 2) s.set(0, 8, 5);
+    	int value = r.nextInt(9)+1;
+    	int i = r.nextInt(3);
+    	int q = r.nextInt(3);
+    	int j = r.nextInt(3);
 		
-		if (r.nextInt(9) < 2) s.set(1, 0, 2);
-		if (r.nextInt(9) < 2) s.set(1, 1, 5);
-		if (r.nextInt(9) < 2) s.set(1, 2, 9);
-		if (r.nextInt(9) < 2) s.set(1, 3, 6);
-		if (r.nextInt(9) < 2) s.set(1, 4, 8);
-		if (r.nextInt(9) < 2) s.set(1, 5, 3);
-		if (r.nextInt(9) < 2) s.set(1, 6, 7);
-		if (r.nextInt(9) < 2) s.set(1, 7, 4);
-		if (r.nextInt(9) < 2) s.set(1, 8, 1);
+    	List<Set<Integer>> rows = new ArrayList<Set<Integer>>();
+    	List<Set<Integer>> columns = new ArrayList<Set<Integer>>();
+    	List<Set<Integer>> squares = new ArrayList<Set<Integer>>();
+		int n=9;
 		
-		if (r.nextInt(9) < 2) s.set(2, 0, 6);
-		if (r.nextInt(9) < 2) s.set(2, 1, 4);
-		if (r.nextInt(9) < 2) s.set(2, 2, 7);
-		if (r.nextInt(9) < 2) s.set(2, 3, 2);
-		if (r.nextInt(9) < 2) s.set(2, 4, 5);
-		if (r.nextInt(9) < 2) s.set(2, 5, 1);
-		if (r.nextInt(9) < 2) s.set(2, 6, 3);
-		if (r.nextInt(9) < 2) s.set(2, 7, 8);
-		if (r.nextInt(9) < 2) s.set(2, 8, 9);
+		Set<Integer> set = new HashSet<Integer>();
 		
-		if (r.nextInt(9) < 2) s.set(3, 0, 5);
-		if (r.nextInt(9) < 2) s.set(3, 1, 3);
-		if (r.nextInt(9) < 2) s.set(3, 2, 8);
-		if (r.nextInt(9) < 2) s.set(3, 3, 4);
-		if (r.nextInt(9) < 2) s.set(3, 4, 6);
-		if (r.nextInt(9) < 2) s.set(3, 5, 2);
-		if (r.nextInt(9) < 2) s.set(3, 6, 9);
-		if (r.nextInt(9) < 2) s.set(3, 7, 1);
-		if (r.nextInt(9) < 2) s.set(3, 8, 7);
-		
-		if (r.nextInt(9) < 2) s.set(4, 0, 1);
-		if (r.nextInt(9) < 2) s.set(4, 1, 4);
-		if (r.nextInt(9) < 2) s.set(4, 2, 2);
-		if (r.nextInt(9) < 2) s.set(4, 3, 8);
-		if (r.nextInt(9) < 2) s.set(4, 4, 9);
-		if (r.nextInt(9) < 2) s.set(4, 5, 7);
-		if (r.nextInt(9) < 2) s.set(4, 6, 5);
-		if (r.nextInt(9) < 2) s.set(4, 7, 3);
-		if (r.nextInt(9) < 2) s.set(4, 8, 6);
-		
-		if (r.nextInt(9) < 2) s.set(5, 0, 9);
-		if (r.nextInt(9) < 2) s.set(5, 1, 6);
-		if (r.nextInt(9) < 2) s.set(5, 2, 7);
-		if (r.nextInt(9) < 2) s.set(5, 3, 1);
-		if (r.nextInt(9) < 2) s.set(5, 4, 3);
-		if (r.nextInt(9) < 2) s.set(5, 5, 5);
-		if (r.nextInt(9) < 2) s.set(5, 6, 4);
-		if (r.nextInt(9) < 2) s.set(5, 7, 2);
-		if (r.nextInt(9) < 2) s.set(5, 8, 8);
-		
-		if (r.nextInt(9) < 2) s.set(6, 0, 7);
-		if (r.nextInt(9) < 2) s.set(6, 1, 1);
-		if (r.nextInt(9) < 2) s.set(6, 2, 3);
-		if (r.nextInt(9) < 2) s.set(6, 3, 5);
-		if (r.nextInt(9) < 2) s.set(6, 4, 2);
-		if (r.nextInt(9) < 2) s.set(6, 5, 8);
-		if (r.nextInt(9) < 2) s.set(6, 6, 6);
-		if (r.nextInt(9) < 2) s.set(6, 7, 9);
-		if (r.nextInt(9) < 2) s.set(6, 8, 4);
-		
-		if (r.nextInt(9) < 2) s.set(7, 0, 8);
-		if (r.nextInt(9) < 2) s.set(7, 1, 9);
-		if (r.nextInt(9) < 2) s.set(7, 2, 6);
-		if (r.nextInt(9) < 2) s.set(7, 3, 3);
-		if (r.nextInt(9) < 2) s.set(7, 4, 7);
-		if (r.nextInt(9) < 2) s.set(7, 5, 4);
-		if (r.nextInt(9) < 2) s.set(7, 6, 1);
-		if (r.nextInt(9) < 2) s.set(7, 7, 5);
-		if (r.nextInt(9) < 2) s.set(7, 8, 2);
-		
-		if (r.nextInt(9) < 2) s.set(8, 0, 4);
-		if (r.nextInt(9) < 2) s.set(8, 1, 2);
-		if (r.nextInt(9) < 2) s.set(8, 2, 5);
-		if (r.nextInt(9) < 2) s.set(8, 3, 9);
-		if (r.nextInt(9) < 2) s.set(8, 4, 1);
-		if (r.nextInt(9) < 2) s.set(8, 5, 6);
-		if (r.nextInt(9) < 2) s.set(8, 6, 8);
-		if (r.nextInt(9) < 2) s.set(8, 7, 7);
-		if (r.nextInt(9) < 2) s.set(8, 8, 3);		
-		
+		while(n-- >0){
+		    rows.add(new HashSet<Integer>());
+		    columns.add(new HashSet<Integer>());
+		    squares.add(new HashSet<Integer>());
+		}
+    	
+    	if(r.nextBoolean()){
+    		for(int k=0; k<3; k++){
+    			int m = r.nextInt(9)+1;
+    			while(m==value || set.contains(m)) m = r.nextInt(9)+1;
+    			rows.get(j*3+i).add(m);
+    			columns.get(q*3+k).add(m);
+    			set.add(m);
+    			squares.get(getSquareId(j*3+i, q*3+k)).add(m);
+    			s.set(j*3+i, q*3+k, m);
+    		}
+    		int c = ((q+2)%3)*3+r.nextInt(3);
+    		s.set(j*3+(i+1)%3, c, value);
+    		columns.get(c).add(value);
+    		rows.get(j*3+(i+1)%3).add(value);
+    		squares.get(getSquareId(j*3+(i+1)%3, c)).add(value);
+    		
+    		c = ((q+1)%3)*3+r.nextInt(3);
+    		s.set(j*3+(i+2)%3, c, value);    		
+    		columns.get(c).add(value);
+    		rows.get(j*3+(i+2)%3).add(value);
+    		squares.get(getSquareId(j*3+(i+2)%3, c)).add(value);
+    	}
+    	else{
+    		for(int k=0; k<3; k++){
+    			int m = r.nextInt(9)+1;
+    			while(m==value || set.contains(m)) m = r.nextInt(9)+1;
+    			rows.get(q*3+k).add(m);
+    			columns.get(j*3+i).add(m);
+    			squares.get(getSquareId(q*3+k, j*3+i)).add(value);
+    			set.add(m);
+    			s.set(q*3+k, j*3+i, m);
+    		}
+    		
+    		int id = ((q+2)%3)*3+r.nextInt(3);
+    		s.set(id, j*3+(i+1)%3, value);
+    		columns.get(j*3+(i+1)%3).add(value);
+    		rows.get(id).add(value);
+    		squares.get(getSquareId(id, j*3+(i+1)%3)).add(value);
+    		
+    		id = ((q+1)%3)*3+r.nextInt(3);
+    		s.set(id, j*3+(i+2)%3, value);   		
+    		columns.get(j*3+(i+2)%3).add(value);
+    		rows.get(id).add(value);
+    		squares.get(getSquareId(id, j*3+(i+2)%3)).add(value);
+    	}
+    	
+    	for(int k = 0; k < 9; k++) {
+            for (int l = 0; l < 9; l++) {            	
+            	if(s.get(k, l)== 0 && r.nextInt(9)<2){
+            		value = r.nextInt(9)+1;
+            		while(rows.get(k).contains(value) || columns.get(l).contains(value)
+            				|| squares.get(getSquareId(k,l)).contains(value)) {
+            			value = r.nextInt(9)+1; 
+            		}
+        			s.set(k, l, value);
+            		rows.get(k).add(value); 
+            		columns.get(l).add(value);
+            		squares.get(getSquareId(k,l)).add(value);
+            	}
+            }
+    	}		
         return s;
     }
+    
+    private int getSquareId(int row, int column){
+    	return (row/3)*3+(column/3);
+    }
+    
     public static void main(String[] args) {
         Sudoku s = new SudokuGenerator().generate();
         for(int i = 0; i < 9; i++) {
