@@ -23,13 +23,13 @@ public class SudokuGeneratorTest {
 			for(int j=0; j<9; j++){
 				if((value = sudoku.get(i, j))!=0){
 					if(set.contains(value)){
-						duplicate = false;
+						duplicate = true;
 						break;
 					}
 					set.add(value);
 				}
 			}
-			if(!duplicate) break;
+			if(duplicate) break;
 		}
 		
 		Assert.assertFalse(duplicate);
@@ -46,13 +46,13 @@ public class SudokuGeneratorTest {
 			for(int j=0; j<9; j++){
 				if((value = sudoku.get(j, i))!=0){
 					if(set.contains(value)){
-						duplicate = false;
+						duplicate = true;
 						break;
 					}
 					set.add(value);
 				}
 			}
-			if(!duplicate) break;
+			if(duplicate) break;
 		}
 		
 		Assert.assertFalse(duplicate);
@@ -73,15 +73,17 @@ public class SudokuGeneratorTest {
 				for(int j=c; j<c+3; j++){
 					if((value = sudoku.get(i, j))!=0){
 						if(set.contains(value)){
-							duplicate = false;
+							duplicate = true;
 							break;
 						}
 						set.add(value);
 					}
 				}
 				c++;
+				if(duplicate) break;
 			}
 			r+=3;
+			if(duplicate) break;
 		}
 		
 		Assert.assertFalse(duplicate);
