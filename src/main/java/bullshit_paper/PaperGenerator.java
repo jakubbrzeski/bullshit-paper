@@ -5,7 +5,7 @@ import java.util.*;
 import java.io.*;
 import org.jsoup.nodes.*;
 
-public class PaperGenerator <PARSER extends IArticleParser, PROVIDER extends  IArticleProvider>
+public class PaperGenerator
 {
     public void generate(String title, List<SectionInfo> sectionInfos, FileOutputStream out,
                          IArticleProvider articleProvider, IArticleParser articleParser) throws Exception

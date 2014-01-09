@@ -10,9 +10,6 @@ import java.net.URLEncoder;
 import java.util.LinkedList;
 import java.util.List;
 
-/**
- * Created by ciemny on 1/8/14.
- */
 public class WPolityceArticleProvider implements IArticleProvider{
 
     private final String chromeUserAgent = "Mozilla/5.0 (Windows NT 6.2; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/32.0.1667.0 Safari/537.36";
@@ -42,7 +39,6 @@ public class WPolityceArticleProvider implements IArticleProvider{
             String url = searchURL + buildQuery(tags);
             Document doc = Jsoup.connect(url).timeout(10000).userAgent(chromeUserAgent).get();
             for (Element e : doc.select("div.content_wide_searchresult_entry")) {
-//                System.out.println(e);
                 String articleURL = urlPrefix + e.select("a[href]").attr("href");
                 System.out.println("Article url:" + articleURL);
                 Document article = Jsoup.connect(articleURL).timeout(10000).userAgent(chromeUserAgent).get();

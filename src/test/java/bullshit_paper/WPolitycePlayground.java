@@ -6,9 +6,6 @@ import java.io.FileOutputStream;
 import java.util.Arrays;
 import java.util.List;
 
-/**
- * Created by ciemny on 1/8/14.
- */
 public class WPolitycePlayground {
     @Test
     public void test() throws Exception {
