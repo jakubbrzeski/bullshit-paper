@@ -122,7 +122,7 @@ public class MainWindowController implements Initializable
 	public Void call() throws Exception
 	{
 	    try (FileOutputStream out = new FileOutputStream(_file)) {
-		new PaperGenerator().generate(_title, _sections, out);
+		new PaperGenerator().generate(_title, _sections, out, new OnetArticleProvider(), new OnetArticleParser());
 	    }
 	    return null;
 	}

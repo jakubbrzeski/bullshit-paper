@@ -5,35 +5,35 @@ import java.util.*;
 import java.io.*;
 import org.jsoup.nodes.*;
 
-public class PaperGenerator
+public class PaperGenerator <PARSER extends IArticleParser, PROVIDER extends  IArticleProvider>
 {
-    public void generate(String title, List<SectionInfo> sectionInfos, FileOutputStream out) throws Exception
+    public void generate(String title, List<SectionInfo> sectionInfos, FileOutputStream out,
+                         IArticleProvider articleProvider, IArticleParser articleParser) throws Exception
     {
-	ArticleMixer mixer = new ArticleMixer();
-	List<PaperSection> sections = new ArrayList<>();
-	for (SectionInfo si : sectionInfos) {
-	    List<IArticle> articles = getArticles(si.getTags());
-	    List<PaperElement> elements = new ArrayList<>();
-	    for (IArticle art : mixer.Mix(articles)) elements.add((Article)art);
-	    if (si.getSudoku()) elements.add(new SudokuGenerator().generate());
-	    sections.add(new PaperSection(si.getName(), elements, si.getHeaderColor()));
-	}
-	PDFRenderer renderer = new PDFRenderer();
-	renderer.render(out, title, sections);	
+        ArticleMixer mixer = new ArticleMixer();
+        List<PaperSection> sections = new ArrayList<>();
+        for (SectionInfo si : sectionInfos) {
+            List<IArticle> articles = getArticles(si.getTags(), articleProvider, articleParser);
+            List<PaperElement> elements = new ArrayList<>();
+            for (IArticle art : mixer.Mix(articles)) elements.add((Article)art);
+            if (si.getSudoku()) elements.add(new SudokuGenerator().generate());
+            sections.add(new PaperSection(si.getName(), elements, si.getHeaderColor()));
+        }
+        PDFRenderer renderer = new PDFRenderer();
+        renderer.render(out, title, sections);
     }
     
-    private List<IArticle> getArticles(List<String> tags)
+    private List<IArticle> getArticles(List<String> tags, IArticleProvider articleProvider,
+                                       IArticleParser articleParser)
     {
-        OnetArticleParser articleParser = new OnetArticleParser();
-        OnetArticleProvider articleProvider = new OnetArticleProvider();
-
         List<IArticle> articles = new LinkedList<>();
         for (Document doc : articleProvider.getDocuments(tags)) {
             IArticle article = articleParser.parseDocument(doc);
             if (article == null) {
                 continue;
             }
-            if (articles.isEmpty() || !articles.get(articles.size()-1).getTitle().equals(article.getTitle())) articles.add(article);
+            if (articles.isEmpty() || !articles.get(articles.size()-1).getTitle().equals(article.getTitle()))
+                articles.add(article);
         }
      /*   for (IArticle article : articles) {
             System.out.printf("title %s: %s\n", article.getDate(), article.getTitle());
