@@ -36,3 +36,18 @@ this
 [here](http://www.cyberciti.biz/faq/howto-unix-linux-convert-dos-newlines-cr-lf-unix-text-format)
 
 Once you're done just throw it into the resources directory for dictionary (`/bullshit-paper/src/main/resources/dict`)
+
+
+# Run project with GUI
+
+You need JavaFX to do it. Download from: http://www.oracle.com/technetwork/java/javafx/downloads/index-jsp-136193.html
+
+Then install like above: 
+```
+mvn install:install-file -Dfile="[path_to_jfxrt_jar]" -DgroupId=com.oracle -DartifactId=javafx -Dversion=2.2.45 -Dpackaging=jar
+```
+where path_to_jfxrt_jar is for example C:\Program Files\Java\jre7\lib\jfxrt.jar
+
+Last thing to do - run the project using 
+`make run`
+in the top directory of the project.
