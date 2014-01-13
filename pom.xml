@@ -63,25 +63,25 @@
     </pluginRepositories>
 
     <build>
-        <sourceDirectory>/home/ciemny/Projects/bullshit-paper/src/main/java</sourceDirectory>
-        <scriptSourceDirectory>/home/ciemny/Projects/bullshit-paper/src/main/scripts</scriptSourceDirectory>
-        <testSourceDirectory>/home/ciemny/Projects/bullshit-paper/src/test/java</testSourceDirectory>
-        <outputDirectory>/home/ciemny/Projects/bullshit-paper/target/classes</outputDirectory>
-        <testOutputDirectory>/home/ciemny/Projects/bullshit-paper/target/test-classes</testOutputDirectory>
+        <sourceDirectory>./src/main/java</sourceDirectory>
+        <scriptSourceDirectory>./src/main/scripts</scriptSourceDirectory>
+        <testSourceDirectory>./src/test/java</testSourceDirectory>
+        <outputDirectory>./target/classes</outputDirectory>
+        <testOutputDirectory>./target/test-classes</testOutputDirectory>
 
         <resources>
             <resource>
-                <directory>/home/ciemny/Projects/bullshit-paper/src/main/resources</directory>
+                <directory>./src/main/resources</directory>
             </resource>
         </resources>
 
         <testResources>
             <testResource>
-                <directory>/home/ciemny/Projects/bullshit-paper/src/test/resources</directory>
+                <directory>./src/test/resources</directory>
             </testResource>
         </testResources>
 
-        <directory>/home/ciemny/Projects/bullshit-paper/target</directory>
+        <directory>./target</directory>
         <finalName>bullshit-paper-0.0.1</finalName>
 
         <pluginManagement>
@@ -234,7 +234,7 @@
                             <goal>site</goal>
                         </goals>
                         <configuration>
-                            <outputDirectory>/home/ciemny/Projects/bullshit-paper/target/site</outputDirectory>
+                            <outputDirectory>./target/site</outputDirectory>
                             <reportPlugins>
                                 <reportPlugin>
                                     <groupId>org.apache.maven.plugins</groupId>
@@ -250,7 +250,7 @@
                             <goal>deploy</goal>
                         </goals>
                         <configuration>
-                            <outputDirectory>/home/ciemny/Projects/bullshit-paper/target/site</outputDirectory>
+                            <outputDirectory>./target/site</outputDirectory>
                             <reportPlugins>
                                 <reportPlugin>
                                     <groupId>org.apache.maven.plugins</groupId>
@@ -261,7 +261,7 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <outputDirectory>/home/ciemny/Projects/bullshit-paper/target/site</outputDirectory>
+                    <outputDirectory>./target/site</outputDirectory>
                     <reportPlugins>
                         <reportPlugin>
                             <groupId>org.apache.maven.plugins</groupId>
@@ -274,6 +274,6 @@
     </build>
 
     <reporting>
-        <outputDirectory>/home/ciemny/Projects/bullshit-paper/target/site</outputDirectory>
+        <outputDirectory>./target/site</outputDirectory>
     </reporting>
 </project>
