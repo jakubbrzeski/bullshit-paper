@@ -7,13 +7,13 @@ import org.jsoup.nodes.*;
 
 public class PaperGenerator
 {
-    public void generate(String title, List<SectionInfo> sectionInfos, FileOutputStream out,
-                         IArticleProvider articleProvider, IArticleParser articleParser) throws Exception
+    public void generate(String title, List<SectionInfo> sectionInfos, FileOutputStream out) throws Exception
     {
         ArticleMixer mixer = new ArticleMixer();
         List<PaperSection> sections = new ArrayList<>();
         for (SectionInfo si : sectionInfos) {
-            List<IArticle> articles = getArticles(si.getTags(), articleProvider, articleParser);
+            List<IArticle> articles = getArticles(si.getTags(), si.getParserObject().getProvider(),
+                    si.getParserObject().getParser());
             List<PaperElement> elements = new ArrayList<>();
             for (IArticle art : mixer.Mix(articles)) elements.add((Article)art);
             if (si.getSudoku()) elements.add(new SudokuGenerator().generate());

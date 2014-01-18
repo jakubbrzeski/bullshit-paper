@@ -2,6 +2,7 @@
 
 <?import java.lang.*?>
 <?import java.util.*?>
+<?import javafx.collections.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
@@ -21,7 +22,6 @@
         <Label text="Name:" GridPane.columnIndex="0" GridPane.margin="$x1" GridPane.rowIndex="4" />
         <Label text="Tags:" GridPane.columnIndex="0" GridPane.margin="$x1" GridPane.rowIndex="5" />
         <Label text="Header color:" GridPane.columnIndex="0" GridPane.margin="$x1" GridPane.rowIndex="6" />
-        <CheckBox id="sudokuCheckBox" fx:id="_sectionSudokuCB" mnemonicParsing="false" text="Sudoku" GridPane.columnIndex="0" GridPane.margin="$x1" GridPane.rowIndex="7" />
         <TextField id="nameTextField" fx:id="_sectionNameTF" prefWidth="202.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
         <TextField id="_tagsTextField" fx:id="_sectionTagsTF" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
         <ColorPicker fx:id="_sectionHeaderColorPicker" GridPane.columnIndex="1" GridPane.rowIndex="6" />
@@ -45,6 +45,17 @@
           </padding>
         </HBox>
         <Label fx:id="_statusLabel" text="" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="8">
+          <GridPane.margin>
+            <Insets left="5.0" fx:id="x1" />
+          </GridPane.margin>
+        </Label>
+        <ComboBox id="portalComboBox" fx:id="_portalComboBox" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+        <CheckBox id="sudokuCheckBox" fx:id="_sectionSudokuCB" mnemonicParsing="false" text="Sudoku" GridPane.columnIndex="0" GridPane.rowIndex="8">
+          <GridPane.margin>
+            <Insets left="5.0" fx:id="x1" />
+          </GridPane.margin>
+        </CheckBox>
+        <Label text="Portal:" GridPane.columnIndex="0" GridPane.rowIndex="7">
           <GridPane.margin>
             <Insets left="5.0" fx:id="x1" />
           </GridPane.margin>

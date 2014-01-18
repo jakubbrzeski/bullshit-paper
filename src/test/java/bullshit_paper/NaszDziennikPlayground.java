@@ -1,14 +1,9 @@
 package bullshit_paper;
 
 import java.io.FileOutputStream;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
 import org.junit.Test;
 
 public class NaszDziennikPlayground {
@@ -17,10 +12,11 @@ public class NaszDziennikPlayground {
     public void test() throws Exception {
 
         List<SectionInfo> sectionInfos = Arrays.asList(new SectionInfo[]{
-                new SectionInfo(Arrays.asList("doda"), "Doda", java.awt.Color.PINK, true),
-                new SectionInfo(Arrays.asList("bigos"), "Bigos", java.awt.Color.BLACK, false),
+                new SectionInfo(Arrays.asList("doda"), "Doda", java.awt.Color.PINK, true,
+                        "Nasz Dziennik", new NaszDziennikArticleParser(), new NaszDziennikArticleProvider()),
+                new SectionInfo(Arrays.asList("bigos"), "Bigos", java.awt.Color.BLACK, false,
+                        "Nasz Dziennik", new NaszDziennikArticleParser(), new NaszDziennikArticleProvider()),
         });
-        new PaperGenerator().generate("Nasz Dziennik", sectionInfos, new FileOutputStream("NaszDziennik.pdf"),
-                new NaszDziennikArticleProvider(), new NaszDziennikArticleParser());
+        new PaperGenerator().generate("Nasz Dziennik", sectionInfos, new FileOutputStream("NaszDziennik.pdf"));
     }
 }
