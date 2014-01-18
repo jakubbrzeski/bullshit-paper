@@ -56,7 +56,8 @@ public class ParsersProvider {
     void init() {
         this.add("Onet", new OnetArticleParser(), new OnetArticleProvider())
             .add("Nasz Dziennik", new NaszDziennikArticleParser(), new NaszDziennikArticleProvider())
-            .add("W Potylice", new WPolityceArticleParser(), new WPolityceArticleProvider());
+            .add("W Potylice", new WPolityceArticleParser(), new WPolityceArticleProvider())
+            .add("Pudelek", new PudelekArticleParser(), new PudelekArticleProvider());
     }
 
     public ParsersProvider() {
