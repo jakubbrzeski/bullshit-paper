@@ -17,8 +17,9 @@ public class PaperGenerator
             List<IArticle> articles = getArticles(si.getTags(), si.getParserObject().getProvider(),
                     si.getParserObject().getParser());
             List<PaperElement> elements = new ArrayList<>();
-            for (IArticle art : mixer.Mix(articles)) elements.add((Article)art);
-            if (si.getSudoku()) elements.add(new SudokuGenerator().generate());
+            for (IArticle art : mixer.Mix(articles)) 
+            	if(art!=null)elements.add((Article)art);
+            if (si.getSudoku() && !elements.isEmpty()) elements.add(new SudokuGenerator().generate());
             sections.add(new PaperSection(si.getName(), elements, si.getHeaderColor()));
         }
         PDFRenderer renderer = new PDFRenderer();

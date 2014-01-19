@@ -1,10 +1,10 @@
 package bullshit_paper_pdf;
 
-import java.util.*;
 import java.io.*;
 import java.text.*;
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.*;
+
 import bullshit_paper.*;
 
 public class PDFRenderer implements IRenderer
@@ -41,10 +41,15 @@ public class PDFRenderer implements IRenderer
 	    writer.setPageEvent(headerGen);
 	    _doc.addTitle(title);
 	    _doc.open();
+	    
 	    for (PaperSection section : sections) {
-		_doc.newPage();
-		headerGen.setSection(section.getTitle(), section.getHeaderColor());	
-		renderSection(section, writer.getDirectContent());
+	    	_doc.newPage();
+	    	java.util.List<PaperElement> elements = section.getElements();
+	    	headerGen.setSection(section.getTitle(), section.getHeaderColor());	
+	    	if(elements.isEmpty())
+	    		_doc.add(new Paragraph("Unfortunately we couldn't find any article containing" +
+	    				" the given phrase. :-("));
+	    	else renderSection(section, writer.getDirectContent());
 	    }
 	    _doc.close();
 	}
