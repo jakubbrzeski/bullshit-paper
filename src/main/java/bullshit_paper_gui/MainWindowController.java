@@ -53,6 +53,8 @@ public class MainWindowController implements Initializable {
     private Label _statusLabel;
     @FXML
     private GridPane _mainPane;
+    @FXML
+    private ProgressBar _progressBar;
 
     private Control[] _sectionControls;
     private boolean _removing = false;
@@ -76,6 +78,7 @@ public class MainWindowController implements Initializable {
                 _sectionsNames.set(_ix, newValue);
             }
         });
+        _progressBar.setVisible(false);
         for (Control c : _sectionControls) c.setDisable(true);
     }
 
@@ -93,6 +96,7 @@ public class MainWindowController implements Initializable {
         File file = chooser.showSaveDialog(null);
         if (file == null) return;
         if (!file.getName().toLowerCase().endsWith(".pdf")) file = new File(file.getParent(), file.getName() + ".pdf");
+        showProgressBar();
         disableUI(true);
         setStatus("Generating...");
         GeneratePaperTask task = new GeneratePaperTask(file, _titleTF.getText(), _sections,
@@ -102,14 +106,17 @@ public class MainWindowController implements Initializable {
             public void handle(WorkerStateEvent event) {
                 setStatus("OK");
                 disableUI(false);
+                hideProgressBar();
             }
         });
         task.setOnFailed(new EventHandler<WorkerStateEvent>() {
             @Override
             public void handle(WorkerStateEvent event) {
                 Throwable ex = event.getSource().getException();
-                if (ex == null) setStatus("Fail");
-                else setStatus(ex.toString());
+                setStatus("Error");
+                hideProgressBar();
+                //if (ex == null) setStatus("Fail");
+                //else setStatus(ex.toString());
                 disableUI(false);
             }
         });
@@ -142,7 +149,14 @@ public class MainWindowController implements Initializable {
             return null;
         }
     }
-
+    private void hideProgressBar(){
+        _progressBar.setVisible(false);
+        _statusLabel.setVisible(true);
+    }
+    private void showProgressBar(){
+        _statusLabel.setVisible(false);
+        _progressBar.setVisible(true);
+    }
     private void setStatus(String s) {
         _statusLabel.setText(s);
     }

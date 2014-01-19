@@ -44,7 +44,12 @@
             <Insets left="5.0" top="2.0" />
           </padding>
         </HBox>
-        <Label fx:id="_statusLabel" text="" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="8">
+        <ProgressBar fx:id="_progressBar" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="8">
+            <GridPane.margin>
+                <Insets left="5.0" fx:id="x1" />
+            </GridPane.margin>
+        </ProgressBar>
+        <Label fx:id="_statusLabel" text="" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="8">
           <GridPane.margin>
             <Insets left="5.0" fx:id="x1" />
           </GridPane.margin>
