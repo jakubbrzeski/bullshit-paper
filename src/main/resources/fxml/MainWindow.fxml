@@ -44,14 +44,10 @@
             <Insets left="5.0" top="2.0" />
           </padding>
         </HBox>
-        <ProgressBar fx:id="_progressBar" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="8">
-            <GridPane.margin>
-                <Insets left="5.0" fx:id="x1" />
-            </GridPane.margin>
-        </ProgressBar>
+        <ProgressBar fx:id="_progressBar" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="8"></ProgressBar>
         <Label fx:id="_statusLabel" text="" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="8">
           <GridPane.margin>
-            <Insets left="5.0" fx:id="x1" />
+            <Insets left="120.0" fx:id="x1" />
           </GridPane.margin>
         </Label>
         <ComboBox id="portalComboBox" fx:id="_portalComboBox" GridPane.columnIndex="1" GridPane.rowIndex="7" />

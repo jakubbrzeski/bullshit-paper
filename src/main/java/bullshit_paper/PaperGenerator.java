@@ -3,6 +3,8 @@ package bullshit_paper;
 import bullshit_paper_pdf.*;
 import java.util.*;
 import java.io.*;
+
+import javafx.scene.control.Label;
 import org.jsoup.nodes.*;
 
 public class PaperGenerator

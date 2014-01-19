@@ -85,10 +85,10 @@ public class MainWindowController implements Initializable {
     @FXML
     private void handleRender(ActionEvent event) {
         if (_sections.isEmpty()) {
-            setStatus("You have to define at least one section.");
+            setStatus(_statusLabel,"You have to define at least one section.");
             return;
         }
-        setStatus("");
+        setStatus(_statusLabel,"");
         if (_ix != -1) _sections.set(_ix, saveSection());
         FileChooser chooser = new FileChooser();
         chooser.setInitialFileName(_titleTF.getText());
@@ -98,13 +98,13 @@ public class MainWindowController implements Initializable {
         if (!file.getName().toLowerCase().endsWith(".pdf")) file = new File(file.getParent(), file.getName() + ".pdf");
         showProgressBar();
         disableUI(true);
-        setStatus("Generating...");
+        setStatus(_statusLabel,"Generating...");
         GeneratePaperTask task = new GeneratePaperTask(file, _titleTF.getText(), _sections,
                 _portalComboBox.getValue().getParser(), _portalComboBox.getValue().getProvider());
         task.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
             @Override
             public void handle(WorkerStateEvent event) {
-                setStatus("OK");
+                setStatus(_statusLabel,"OK");
                 disableUI(false);
                 hideProgressBar();
             }
@@ -113,7 +113,7 @@ public class MainWindowController implements Initializable {
             @Override
             public void handle(WorkerStateEvent event) {
                 Throwable ex = event.getSource().getException();
-                setStatus("Error");
+                setStatus(_statusLabel,"Error");
                 hideProgressBar();
                 //if (ex == null) setStatus("Fail");
                 //else setStatus(ex.toString());
@@ -154,11 +154,11 @@ public class MainWindowController implements Initializable {
         _statusLabel.setVisible(true);
     }
     private void showProgressBar(){
-        _statusLabel.setVisible(false);
+        //_statusLabel.setVisible(false);
         _progressBar.setVisible(true);
     }
-    private void setStatus(String s) {
-        _statusLabel.setText(s);
+    private void setStatus(Label a,String s) {
+        a.setText(s);
     }
 
     @FXML
